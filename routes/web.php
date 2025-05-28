@@ -1,7 +1,9 @@
 <?php
+use App\Services\TelegramBotService;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
+Route::post('/telegram/webhook', function () {
+    $update = Telegram::getWebhookUpdate();
+    app(TelegramBotService::class)->handleWebhook($update);
+    return response('OK', 200);
 });
