@@ -19,8 +19,7 @@ class TelegramBotService
     public function __construct()
     {
         // Initialize Telegram Bot API with token from .env
-        $this->telegram = new Api(env('7601754928:AAEqLqnUp77UoFA3Cqg5FhtDrlGUiJMbQEs
-'));
+        $this->telegram = new Api('7601754928:AAEqLqnUp77UoFA3Cqg5FhtDrlGUiJMbQEs');
 
         // Get bot information
         $botInfo = $this->telegram->getMe();
