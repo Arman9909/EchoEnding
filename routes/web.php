@@ -7,3 +7,6 @@ Route::post('/telegram/webhook', function () {
     app(TelegramBotService::class)->handleWebhook($update);
     return response('OK', 200);
 });
+Route::get('/', function () {
+    return "ok";
+});
