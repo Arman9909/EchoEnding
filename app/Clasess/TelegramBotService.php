@@ -158,6 +158,7 @@ class TelegramBotService
                 ]);
 
 
+
                 // Формируем инлайн-клавиатуру с кнопкой "/bake"
                 $inlineKeyboard = [
                     'inline_keyboard' => [
@@ -245,8 +246,7 @@ class TelegramBotService
                 ]);
                 break;
 
-                switch ($command)
-                {
+                switch ($command) {
                     case "/meet_rabbit_choice_sing":
                         // Отправляем действие "печатает"
                         $this->telegram->sendChatAction([
