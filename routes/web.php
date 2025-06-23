@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Services\TelegramBotService;
+use App\Clasess\TelegramBotService;
 use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
