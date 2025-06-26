@@ -184,7 +184,7 @@ class TelegramBotService
                 // Отправляем фото
                 $this->telegram->sendPhoto([
                     'chat_id' => $message->chat->id,
-                    'photo' => 'e3cc8fcf-99d4-4bd1-bc25-75b1918b3c62.jpg', // Замените на реальный URL или путь к файлу
+                    'photo' => 'ded_i_babka.jpg', // Замените на реальный URL или путь к файлу
                     'caption' => 'Привет'
                 ]);
                 break;
@@ -240,7 +240,7 @@ class TelegramBotService
                 // Отправляем фото
                 $this->telegram->sendPhoto([
                     'chat_id' => $message->chat->id,
-                    'photo' => '1c616baa-2b7d-4bf1-9e9a-783f596ee669.jpg', // Замените на реальный URL или путь к файлу
+                    'photo' => 'zayac.jpg', // Замените на реальный URL или путь к файлу
                     'caption' => 'Привет'
                 ]);
                 break;
@@ -331,7 +331,7 @@ class TelegramBotService
                 // Отправляем фото
                 $this->telegram->sendPhoto([
                     'chat_id' => $message->chat->id,
-                    'photo' => 'photo_5208688783720049056_x.jpg', // Замените на реальный URL или путь к файлу
+                    'photo' => 'wolf.jpg', // Замените на реальный URL или путь к файлу
                     'caption' => 'Привет'
                 ]);
                 break;
@@ -436,7 +436,7 @@ class TelegramBotService
                 // Отправляем фото
                 $this->telegram->sendPhoto([
                     'chat_id' => $message->chat->id,
-                    'photo' => '5717e477-db54-4f81-a508-0910f4c5614d.jpg', // Замените на реальный URL или путь к файлу
+                    'photo' => 'bear.jpg', // Замените на реальный URL или путь к файлу
                     'caption' => 'Привет'
                 ]);
 
@@ -596,7 +596,7 @@ class TelegramBotService
                     // Отправляем фото
                     $this->telegram->sendPhoto([
                         'chat_id' => $message->chat->id,
-                        'photo' => '501e8981-3cf1-4243-a802-e8ade6e35ad7.jpg', // Замените на реальный URL или путь к файлу
+                        'photo' => 'lisa.jpg', // Замените на реальный URL или путь к файлу
                         'caption' => 'Привет'
                     ]);
                 } elseif ($command === '/meet_fox_choice_sing') {
@@ -705,7 +705,7 @@ class TelegramBotService
                     // Отправляем фото
                     $this->telegram->sendPhoto([
                         'chat_id' => $message->chat->id,
-                        'photo' => 'https://example.com/path/to/9b18bee8-8f14-4d44-8b5d-047828ae300f.jpg', // Замените на реальный URL или путь к файлу
+                        'photo' => 'kolobok_operator.jpg', // Замените на реальный URL или путь к файлу
                         'caption' => 'Хай'
                     ]);
                 } else {
