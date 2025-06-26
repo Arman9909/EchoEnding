@@ -150,13 +150,12 @@ class TelegramBotService
                     'parse_mode' => 'HTML',
                     'reply_markup' => json_encode($inlineKeyboard),
                 ]);
-                break;
+
                 $this->telegram->sendChatAction([
                     'chat_id' => $message->chat->id,
                     'parse_mode' => 'HTML',
                     'action' => 'typing'
                 ]);
-
 
 
                 // Формируем инлайн-клавиатуру с кнопкой "/bake"
@@ -245,221 +244,228 @@ class TelegramBotService
                     'caption' => 'Привет'
                 ]);
                 break;
+            case "/meet_rabbit_choice_sing":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                switch ($command) {
-                    case "/meet_rabbit_choice_sing":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Продолжить', 'callback_data' => '/meet_wolf']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Продолжить', 'callback_data' => '/meet_wolf']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "Колобок запел свою песенку. Заяц засмеялся: \n— Ладно, катайся дальше, весёлый ты! \nКолобок покатился дальше.",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
+                break;
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "Колобок запел свою песенку. Заяц засмеялся: \n— Ладно, катайся дальше, весёлый ты! \nКолобок покатился дальше.",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
-                        break;
+            case "/meet_rabbit_choice_threaten":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                    case "/meet_rabbit_choice_threaten":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Продолжить', 'callback_data' => '/meet_wolf']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Продолжить', 'callback_data' => '/meet_wolf']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "— А не то я тебя побью! — сказал колобок. \nЗаяц удивился, фыркнул и ускакал прочь. \nКолобок покатился дальше.",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
+                break;
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "— А не то я тебя побью! — сказал колобок. \nЗаяц удивился, фыркнул и ускакал прочь. \nКолобок покатился дальше.",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
-                        break;
+            case "/meet_wolf":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                    case "/meet_wolf":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Спеть песенку', 'callback_data' => '/meet_wolf_choice_sing'],
+                            ['text' => 'Спрятаться', 'callback_data' => '/meet_wolf_choice_hide']
+                        ],
+                        [
+                            ['text' => 'Магазин волка', 'callback_data' => '/магазин']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Спеть песенку', 'callback_data' => '/meet_wolf_choice_sing'],
-                                    ['text' => 'Спрятаться', 'callback_data' => '/meet_wolf_choice_hide']
-                                ],
-                                [
-                                    ['text' => 'Магазин волка', 'callback_data' => '/магазин']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "Из кустов выскочил Волк: \n— Ого, вкусный колобок! \nЧто делать?",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "Из кустов выскочил Волк: \n— Ого, вкусный колобок! \nЧто делать?",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
+                // Отправляем действие "загружает фото"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'upload_photo'
+                ]);
 
-                        // Отправляем действие "загружает фото"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'upload_photo'
-                        ]);
+                // Отправляем фото
+                $this->telegram->sendPhoto([
+                    'chat_id' => $message->chat->id,
+                    'photo' => 'photo_5208688783720049056_x.jpg', // Замените на реальный URL или путь к файлу
+                    'caption' => 'Привет'
+                ]);
+                break;
 
-                        // Отправляем фото
-                        $this->telegram->sendPhoto([
-                            'chat_id' => $message->chat->id,
-                            'photo' => 'photo_5208688783720049056_x.jpg', // Замените на реальный URL или путь к файлу
-                            'caption' => 'Привет'
-                        ]);
-                        break;
+            case "/meet_wolf_choice_sing":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                    case "/meet_wolf_choice_sing":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Продолжить', 'callback_data' => '/meet_bear']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Продолжить', 'callback_data' => '/meet_bear']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "Колобок запел. Волк заулыбался: \n— Хорошая песня, катайся дальше! \nКолобок покатился дальше.",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "Колобок запел. Волк заулыбался: \n— Хорошая песня, катайся дальше! \nКолобок покатился дальше.",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
+                // Отправляем действие "записывает голос"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'record_audio'
+                ]);
 
-                        // Отправляем действие "записывает голос"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'record_audio'
-                        ]);
+                // Отправляем аудио
+                $this->telegram->sendAudio([
+                    'chat_id' => $message->chat->id,
+                    'audio' => 'wolf.mp3', // Замените на реальный URL или путь к файлу
+                    'caption' => 'кхм-кхм, даров!'
+                ]);
+                break;
 
-                        // Отправляем аудио
-                        $this->telegram->sendAudio([
-                            'chat_id' => $message->chat->id,
-                            'audio' => 'wolf.mp3', // Замените на реальный URL или путь к файлу
-                            'caption' => 'кхм-кхм, даров!'
-                        ]);
-                        break;
+            case "/meet_wolf_choice_hide":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                    case "/meet_wolf_choice_hide":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Продолжить', 'callback_data' => '/meet_bear']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Продолжить', 'callback_data' => '/meet_bear']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "Колобок юркнул в траву и затаился. Волк не нашёл его и ушёл. \nКолобок покатился дальше.",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
+                break;
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "Колобок юркнул в траву и затаился. Волк не нашёл его и ушёл. \nКолобок покатился дальше.",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
-                        break;
+            case "/meet_bear":
+                // Отправляем действие "печатает"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'typing'
+                ]);
 
-                    case "/meet_bear":
-                        // Отправляем действие "печатает"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'typing'
-                        ]);
+                // Формируем инлайн-клавиатуру
+                $inlineKeyboard = [
+                    'inline_keyboard' => [
+                        [
+                            ['text' => 'Похвастаться', 'callback_data' => '/meet_bear_choice_boast'],
+                            ['text' => 'Угостить пирогом', 'callback_data' => '/meet_bear_choice_treat']
+                        ],
+                        [
+                            ['text' => 'Магазин медведя', 'callback_data' => '/магазин']
+                        ]
+                    ]
+                ];
 
-                        // Формируем инлайн-клавиатуру
-                        $inlineKeyboard = [
-                            'inline_keyboard' => [
-                                [
-                                    ['text' => 'Похвастаться', 'callback_data' => '/meet_bear_choice_boast'],
-                                    ['text' => 'Угостить пирогом', 'callback_data' => '/meet_bear_choice_treat']
-                                ],
-                                [
-                                    ['text' => 'Магазин медведя', 'callback_data' => '/магазин']
-                                ]
-                            ]
-                        ];
+                // Отправляем сообщение
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "На пути появился Медведь: \n— Кто это катится? Хочу попробовать! \nЧто делать?",
+                    'parse_mode' => 'HTML',
+                    'reply_markup' => json_encode($inlineKeyboard)
+                ]);
 
-                        // Отправляем сообщение
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => "На пути появился Медведь: \n— Кто это катится? Хочу попробовать! \nЧто делать?",
-                            'parse_mode' => 'HTML',
-                            'reply_markup' => json_encode($inlineKeyboard)
-                        ]);
+                // Отправляем действие "загружает фото"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'upload_photo'
+                ]);
 
-                        // Отправляем действие "загружает фото"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'upload_photo'
-                        ]);
+                // Отправляем фото
+                $this->telegram->sendPhoto([
+                    'chat_id' => $message->chat->id,
+                    'photo' => '5717e477-db54-4f81-a508-0910f4c5614d.jpg', // Замените на реальный URL или путь к файлу
+                    'caption' => 'Привет'
+                ]);
 
-                        // Отправляем фото
-                        $this->telegram->sendPhoto([
-                            'chat_id' => $message->chat->id,
-                            'photo' => '5717e477-db54-4f81-a508-0910f4c5614d.jpg', // Замените на реальный URL или путь к файлу
-                            'caption' => 'Привет'
-                        ]);
+                // Отправляем действие "записывает голос"
+                $this->telegram->sendChatAction([
+                    'chat_id' => $message->chat->id,
+                    'action' => 'record_audio'
+                ]);
 
-                        // Отправляем действие "записывает голос"
-                        $this->telegram->sendChatAction([
-                            'chat_id' => $message->chat->id,
-                            'action' => 'record_audio'
-                        ]);
+                // Отправляем аудио
+                $this->telegram->sendAudio([
+                    'chat_id' => $message->chat->id,
+                    'audio' => 'bear.wav', // Замените на реальный URL или путь к файлу
+                    'caption' => 'йоу-йоу! го репчикс'
+                ]);
+                break;
+            default:
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => "Неизвестная команда. Попробуй /start",
+                ]);
+                break;
 
-                        // Отправляем аудио
-                        $this->telegram->sendAudio([
-                            'chat_id' => $message->chat->id,
-                            'audio' => 'bear.wav', // Замените на реальный URL или путь к файлу
-                            'caption' => 'йоу-йоу! го репчикс'
-                        ]);
-                        break;
-                }
+        }
 
 
-                $command = $message->text; // Предполагаем, что команда приходит в $message->text
+
+
+        $command = $message->text; // Предполагаем, что команда приходит в $message->text
 
                 if (!isset($message->chat->id)) {
                     // Обработка ошибки, если chat_id отсутствует
@@ -712,13 +718,6 @@ class TelegramBotService
                 }
             // остальные команды аналогично (все клавиатуры оформить через массив)
 
-            default:
-                $this->telegram->sendMessage([
-                    'chat_id' => $message->chat->id,
-                    'text' => "Неизвестная команда. Попробуй /start",
-                ]);
-                break;
-        }
     }
 
     protected function handleCallbackQuery(CallbackQuery $query)
