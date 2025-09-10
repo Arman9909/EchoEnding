@@ -16,7 +16,7 @@ class TelegramBotService
 
     public function __construct()
     {
-        $this->telegram = new Api(env('7601754928:AAGElcJKUU1NctCCDs_5NXn41N7VhQMlLfk'));
+        $this->telegram = new Api(env('11BS5OOCQ0N2pXzz2M7ivF_7MwUeEFKk4UQWeltdFuejP2GtBDSailxyAXcQXksRoUE6RLHWTIzJBTQYos'));
         $botInfo = $this->telegram->getMe();
         $this->botUsername = $botInfo->getUsername();
     }
