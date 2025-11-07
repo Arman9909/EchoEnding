@@ -467,256 +467,256 @@ class TelegramBotService
 
         $command = $message->text; // Предполагаем, что команда приходит в $message->text
 
-                if (!isset($message->chat->id)) {
-                    // Обработка ошибки, если chat_id отсутствует
-                    return;
-                }
+        if (!isset($message->chat->id)) {
+            // Обработка ошибки, если chat_id отсутствует
+            return;
+        }
 
-                if ($command === '/meet_bear_choice_boast') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+        if ($command === '/meet_bear_choice_boast') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Продолжить', 'callback_data' => '/meet_fox']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Продолжить', 'callback_data' => '/meet_fox']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем сообщение
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "— Я самый быстрый и умный колобок! Никто меня не поймает! — сказал колобок. \nМедведь буркнул: \n— Ну, раз такой крутой, катайся! — и ушёл. \nКолобок покатился дальше.",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
-                } elseif ($command === '/meet_bear_choice_treat') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+            // Отправляем сообщение
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "— Я самый быстрый и умный колобок! Никто меня не поймает! — сказал колобок. \nМедведь буркнул: \n— Ну, раз такой крутой, катайся! — и ушёл. \nКолобок покатился дальше.",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
+        } elseif ($command === '/meet_bear_choice_treat') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Продолжить', 'callback_data' => '/meet_fox']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Продолжить', 'callback_data' => '/meet_fox']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем сообщение
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "Колобок предложил: \n— Давай поделюсь кусочком начинки! \nМедведь обрадовался: \n— Вот это да! Давай дружить! \nТеперь они друзья. Колобок покатился дальше.",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
-                } elseif ($command === '/meet_fox') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+            // Отправляем сообщение
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "Колобок предложил: \n— Давай поделюсь кусочком начинки! \nМедведь обрадовался: \n— Вот это да! Давай дружить! \nТеперь они друзья. Колобок покатился дальше.",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
+        } elseif ($command === '/meet_fox') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Спеть песенку', 'callback_data' => '/meet_fox_choice_sing'],
-                                ['text' => 'Сбежать', 'callback_data' => '/meet_fox_choice_run'],
-                                ['text' => 'Дать интервью', 'callback_data' => '/meet_fox_choice_interview']
-                            ],
-                            [
-                                ['text' => 'Магазин лисы', 'callback_data' => '/магазин']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Спеть песенку', 'callback_data' => '/meet_fox_choice_sing'],
+                        ['text' => 'Сбежать', 'callback_data' => '/meet_fox_choice_run'],
+                        ['text' => 'Дать интервью', 'callback_data' => '/meet_fox_choice_interview']
+                    ],
+                    [
+                        ['text' => 'Магазин лисы', 'callback_data' => '/магазин']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем сообщение
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "Колобок встретил Лису. Она мило улыбнулась: \n— Ой, какой славный колобок! Спой мне песенку! \nЧто делать?",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
+            // Отправляем сообщение
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "Колобок встретил Лису. Она мило улыбнулась: \n— Ой, какой славный колобок! Спой мне песенку! \nЧто делать?",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
 
-                    // Отправляем действие "записывает голос"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'record_audio'
-                    ]);
+            // Отправляем действие "записывает голос"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'record_audio'
+            ]);
 
-                    // Отправляем аудио
-                    $this->telegram->sendAudio([
-                        'chat_id' => $message->chat->id,
-                        'audio' => 'lisa.wav', // Замените на реальный URL или путь к файлу
-                        'caption' => 'мммм, какой ты'
-                    ]);
+            // Отправляем аудио
+            $this->telegram->sendAudio([
+                'chat_id' => $message->chat->id,
+                'audio' => 'lisa.wav', // Замените на реальный URL или путь к файлу
+                'caption' => 'мммм, какой ты'
+            ]);
 
-                    // Отправляем действие "загружает фото"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'upload_photo'
-                    ]);
+            // Отправляем действие "загружает фото"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'upload_photo'
+            ]);
 
-                    // Отправляем фото
-                    $this->telegram->sendPhoto([
-                        'chat_id' => $message->chat->id,
-                        'photo' => 'lisa.jpg', // Замените на реальный URL или путь к файлу
-                        'caption' => 'Привет'
-                    ]);
-                } elseif ($command === '/meet_fox_choice_sing') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+            // Отправляем фото
+            $this->telegram->sendPhoto([
+                'chat_id' => $message->chat->id,
+                'photo' => 'lisa.jpg', // Замените на реальный URL или путь к файлу
+                'caption' => 'Привет'
+            ]);
+        } elseif ($command === '/meet_fox_choice_sing') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем message
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "Колобок запел. Лиса слушала, а потом... схватила его! \n<b>Финал 2: Лиса съедает.</b> \nПопробовать снова? Нажми /bake",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
-                } elseif ($command === '/meet_fox_choice_run') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+            // Отправляем message
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "Колобок запел. Лиса слушала, а потом... схватила его! \n<b>Финал 2: Лиса съедает.</b> \nПопробовать снова? Нажми /bake",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
+        } elseif ($command === '/meet_fox_choice_run') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем сообщение
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "Колобок рванул в сторону и укатился в густой лес. Лиса осталась ни с чем. \n<b>Финал 3: Уходит в лес.</b> \nПопробовать снова? Нажми /bake",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
-                } elseif ($command === '/meet_fox_choice_interview') {
-                    // Отправляем действие "печатает"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'typing'
-                    ]);
+            // Отправляем сообщение
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "Колобок рванул в сторону и укатился в густой лес. Лиса осталась ни с чем. \n<b>Финал 3: Уходит в лес.</b> \nПопробовать снова? Нажми /bake",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
+        } elseif ($command === '/meet_fox_choice_interview') {
+            // Отправляем действие "печатает"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'typing'
+            ]);
 
-                    // Формируем инлайн-клавиатуру
-                    $inlineKeyboard = [
-                        'inline_keyboard' => [
-                            [
-                                ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
-                            ]
-                        ]
-                    ];
+            // Формируем инлайн-клавиатуру
+            $inlineKeyboard = [
+                'inline_keyboard' => [
+                    [
+                        ['text' => 'Попробовать снова?', 'callback_data' => '/bake']
+                    ]
+                ]
+            ];
 
-                    $replyMarkup = json_encode($inlineKeyboard);
-                    if ($replyMarkup === false) {
-                        $this->telegram->sendMessage([
-                            'chat_id' => $message->chat->id,
-                            'text' => 'Ошибка формирования клавиатуры.'
-                        ]);
-                        return;
-                    }
+            $replyMarkup = json_encode($inlineKeyboard);
+            if ($replyMarkup === false) {
+                $this->telegram->sendMessage([
+                    'chat_id' => $message->chat->id,
+                    'text' => 'Ошибка формирования клавиатуры.'
+                ]);
+                return;
+            }
 
-                    // Отправляем сообщение
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "— Хочешь узнать мою историю? — сказал колобок. \nЛиса начала записывать. Видео стало вирусным! \n<b>Финал 4: Колобок становится блогером.</b> \nПопробовать снова? Нажми /bake",
-                        'parse_mode' => 'HTML',
-                        'reply_markup' => $replyMarkup
-                    ]);
+            // Отправляем сообщение
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "— Хочешь узнать мою историю? — сказал колобок. \nЛиса начала записывать. Видео стало вирусным! \n<b>Финал 4: Колобок становится блогером.</b> \nПопробовать снова? Нажми /bake",
+                'parse_mode' => 'HTML',
+                'reply_markup' => $replyMarkup
+            ]);
 
-                    // Отправляем действие "загружает фото"
-                    $this->telegram->sendChatAction([
-                        'chat_id' => $message->chat->id,
-                        'action' => 'upload_photo'
-                    ]);
+            // Отправляем действие "загружает фото"
+            $this->telegram->sendChatAction([
+                'chat_id' => $message->chat->id,
+                'action' => 'upload_photo'
+            ]);
 
-                    // Отправляем фото
-                    $this->telegram->sendPhoto([
-                        'chat_id' => $message->chat->id,
-                        'photo' => 'kolobok_operator.jpg', // Замените на реальный URL или путь к файлу
-                        'caption' => 'Хай'
-                    ]);
-                } else {
-                    // Отправляем сообщение по умолчанию
-                    $this->telegram->sendMessage([
-                        'chat_id' => $message->chat->id,
-                        'text' => "Я бот-сказка про Колобка! \nНачни с команды /bake, чтобы отправиться в приключение!",
-                        'parse_mode' => 'HTML'
-                    ]);
-                }
-            // остальные команды аналогично (все клавиатуры оформить через массив)
+            // Отправляем фото
+            $this->telegram->sendPhoto([
+                'chat_id' => $message->chat->id,
+                'photo' => 'kolobok_operator.jpg', // Замените на реальный URL или путь к файлу
+                'caption' => 'Хай'
+            ]);
+        } else {
+            // Отправляем сообщение по умолчанию
+            $this->telegram->sendMessage([
+                'chat_id' => $message->chat->id,
+                'text' => "Я бот-сказка про Колобка! \nНачни с команды /bake, чтобы отправиться в приключение!",
+                'parse_mode' => 'HTML'
+            ]);
+        }
+        // остальные команды аналогично (все клавиатуры оформить через массив)
 
     }
 
